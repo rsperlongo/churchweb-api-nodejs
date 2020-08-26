@@ -1,50 +1,50 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
-const Members = require('../models/Members');
+const Events = require('../models/Events');
 
 router.get('/', function(req, res) {
-    Members.find(function (err, members) {
+    Events.find(function (err, events) {
         if (err) return next(err);
-        res.json(members);
+        res.json(events);
     });
 });
 
 // get data by id
 router.get('/:id', function(req, res, next) {
-    Members.findById(req.params.id, function (err, members) {
+    Events.findById(req.params.id, function (err, events) {
         if (err) return next(err);
-        res.json(members);
+        res.json(events);
     });
 });
 
 // post data
 router.post('/', function(req, res, next) {
-    Members.create(req.body, function (err, members) {
+    Events.create(req.body, function (err, events) {
         if (err) {
             console.log(err);
             return next(err);
         }
-        res.json(members);
+        res.json(events);
     });
 });
 
 // put data
 router.put('/:id', function(req, res, next) {
-    Members.findByIdAndUpdate(req.params.id, req.body, function (err, members) {
+    Events.findByIdAndUpdate(req.params.id, req.body, function (err, events) {
         if (err) {
             console.log(err);
             return next(err);
         }
-        res.json(members);
+        res.json(events);
     });
 });
   
 // delete data by id
 router.delete('/:id', function(req, res, next) {
-    Members.findByIdAndRemove(req.params.id, req.body, function (err, members) {
+    Events.findByIdAndRemove(req.params.id, req.body, function (err, events) {
         if (err) return next(err);
-        res.json(members);
+        res.json(events);
     });
 });
 

@@ -8,7 +8,6 @@ const MembersSchema = new mongoose.Schema({
   phone: String,
   email: String,
   baptized: String,
- //  updated: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Members', MembersSchema);

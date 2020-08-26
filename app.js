@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost:27017/churchweb-database', {
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const membersRouter = require('./routes/members');
+const eventsRouter = require('./routes/events');
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', membersRouter);
+app.use('/events', eventsRouter);
 
 module.exports = app;
