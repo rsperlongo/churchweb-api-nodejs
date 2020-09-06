@@ -5,7 +5,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/churchweb-database', {
+mongoose.connect('mongodb+srv://ricardo:carmem@2018@ricardo0.vrxdu.mongodb.net/churweb-database', {
     promiseLibrary: require('bluebird'),
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', membersRouter);
+app.use('/members', membersRouter);
 app.use('/events', eventsRouter);
 
 module.exports = app;
