@@ -7,6 +7,7 @@ const MembersSchema = new mongoose.Schema({
   city: String,
   phone: String,
   email: String,
+  description: String,
   baptized: String,
 });
 
