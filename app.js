@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('./app/routes/auth')(app);
 
 mongoose.connect('mongodb+srv://ricardo:carmem@2018@ricardo0.vrxdu.mongodb.net/churweb-database', {
     promiseLibrary: require('bluebird'),
@@ -18,6 +17,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const membersRouter = require('./routes/members');
 const eventsRouter = require('./routes/events');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -41,6 +41,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/members', membersRouter);
 app.use('/events', eventsRouter);
+app.use('/', authRouter);
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
