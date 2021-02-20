@@ -6,14 +6,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 mongoose.connect('mongodb+srv://ricardo:carmem@2018@ricardo0.vrxdu.mongodb.net/churweb-database', {
-    promiseLibrary: require('bluebird'),
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
 }).then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const membersRouter = require('./routes/members');
 const eventsRouter = require('./routes/events');
@@ -27,9 +23,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/members', membersRouter);
 app.use('/events', eventsRouter);
+
+app.listen(3000);
 
 module.exports = app;
